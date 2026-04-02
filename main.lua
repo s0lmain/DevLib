@@ -9732,6 +9732,48 @@ Space=a.load'S',
 Image=a.load'T',
 Group=a.load'U',
 
+-- Dev-only elements (hidden entirely when IsDev = false)
+DevButton={New=function(_,cfg)
+    if not cfg.WindUI.IsDev then return "DevButton",{} end
+    cfg.Icon=cfg.Icon or "lucide:code-2"
+    local _,inst=a.load'D':New(cfg)
+    inst.__type="DevButton"
+    return "DevButton",inst
+end},
+DevSlider={New=function(_,cfg)
+    if not cfg.WindUI.IsDev then return "DevSlider",{} end
+    local _,inst=a.load'H':New(cfg)
+    inst.__type="DevSlider"
+    return "DevSlider",inst
+end},
+DevToggle={New=function(_,cfg)
+    if not cfg.WindUI.IsDev then return "DevToggle",{} end
+    local _,inst=a.load'G':New(cfg)
+    inst.__type="DevToggle"
+    return "DevToggle",inst
+end},
+
+-- Premium-only elements (hidden entirely when IsPremium = false)
+PremButton={New=function(_,cfg)
+    if not cfg.WindUI.IsPremium then return "PremButton",{} end
+    cfg.Icon=cfg.Icon or "lucide:crown"
+    local _,inst=a.load'D':New(cfg)
+    inst.__type="PremButton"
+    return "PremButton",inst
+end},
+PremSlider={New=function(_,cfg)
+    if not cfg.WindUI.IsPremium then return "PremSlider",{} end
+    local _,inst=a.load'H':New(cfg)
+    inst.__type="PremSlider"
+    return "PremSlider",inst
+end},
+PremToggle={New=function(_,cfg)
+    if not cfg.WindUI.IsPremium then return "PremToggle",{} end
+    local _,inst=a.load'G':New(cfg)
+    inst.__type="PremToggle"
+    return "PremToggle",inst
+end},
+
 },
 Load=function(aa,ae,af,ah,aj,ak,al,am,an)
 for ao,ap in next,af do
